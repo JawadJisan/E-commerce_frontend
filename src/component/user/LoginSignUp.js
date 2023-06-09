@@ -11,7 +11,7 @@ import { useAlert } from "react-alert";
 
 
 
-const LoginSignUp = ({  }) => {
+const LoginSignUp = ({ }) => {
     const dispatch = useDispatch();
     const alert = useAlert();
     const { error, loading, isAuthenticated } = useSelector((state) => state.user);
@@ -138,6 +138,8 @@ const LoginSignUp = ({  }) => {
                             <Link to="/password/forgot">Forget Password ?</Link>
                             <input type="submit" value="Login" className="loginBtn" />
                         </form>
+
+                        {/*  */}
                         <form
                             className="signUpForm"
                             ref={registerTab}

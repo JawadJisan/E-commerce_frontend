@@ -6,8 +6,10 @@ import { Link, useNavigate } from "react-router-dom";
 import "./Profile.css";
 
 const Profile = () => {
-  const { user, loading, isAuthenticated } = useSelector((state) => state.user) || {};
-  const navigate = useNavigate()
+  const { user, loading, isAuthenticated } =
+    useSelector((state) => state.user) || {};
+  const navigate = useNavigate();
+
   useEffect(() => {
     if (isAuthenticated === false) {
       navigate("/login");
@@ -15,7 +17,7 @@ const Profile = () => {
   }, [navigate, isAuthenticated, user]);
   return (
     <>
-      {(loading && user == 'undefined') ? (
+      {loading && user == "undefined" ? (
         <Loader />
       ) : (
         <>
