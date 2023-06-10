@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import MetaData from "../layout/MetaData";
 import Loader from "../layout/Loader/Loader";
@@ -9,6 +9,7 @@ const Profile = () => {
   const { user, loading, isAuthenticated } =
     useSelector((state) => state.user) || {};
   const navigate = useNavigate();
+  const [firstRender, setFirstRender] = useState(true);
 
   useEffect(() => {
     if (isAuthenticated === false) {
@@ -17,7 +18,7 @@ const Profile = () => {
   }, [navigate, isAuthenticated, user]);
   return (
     <>
-      {loading && user == "undefined" ? (
+      {loading && user === "undefined" ? (
         <Loader />
       ) : (
         <>
