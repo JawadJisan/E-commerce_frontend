@@ -40,36 +40,42 @@ const Profile = () => {
   // };
 
   return (
-    <>{userData ? <p>{userData.name} </p> : <Loader />}</>
-    // <>
-    //   <MetaData title={`${newUer?.name}'s Profile`} />
-    //   <div className="profileContainer">
-    //     <div>
-    //       <h1>My Profile</h1>
-    //       <img src={newUer?.avatar?.url} alt={newUer?.name} />
-    //       <Link to="/me/update">Edit Profile</Link>
-    //     </div>
-    //     <div>
-    //       <div>
-    //         <h4>Full Name</h4>
-    //         <p>{newUer?.name}</p>
-    //       </div>
-    //       <div>
-    //         <h4>Email</h4>
-    //         <p>{newUer?.email}</p>
-    //       </div>
-    //       <div>
-    //         <h4>Joined On</h4>
-    //         <p>{String(newUer?.createdAt).substr(0, 10)}</p>
-    //       </div>
+    // <>{userData ? <p>{userData.name} </p> : <Loader />}</>
+    <>
+      {userData ? (
+        <>
+          <MetaData title={`${userData?.name}'s Profile`} />
+          <div className="profileContainer">
+            <div>
+              <h1>My Profile</h1>
+              <img src={userData?.avatar?.url} alt={userData?.name} />
+              <Link to="/me/update">Edit Profile</Link>
+            </div>
+            <div>
+              <div>
+                <h4>Full Name</h4>
+                <p>{userData?.name}</p>
+              </div>
+              <div>
+                <h4>Email</h4>
+                <p>{userData?.email}</p>
+              </div>
+              <div>
+                <h4>Joined On</h4>
+                <p>{String(userData?.createdAt).substr(0, 10)}</p>
+              </div>
 
-    //       <div>
-    //         <Link to="/orders">My Orders</Link>
-    //         <Link to="/password/update">Change Password</Link>
-    //       </div>
-    //     </div>
-    //   </div>
-    // </>
+              <div>
+                <Link to="/orders">My Orders</Link>
+                <Link to="/password/update">Change Password</Link>
+              </div>
+            </div>
+          </div>
+        </>
+      ) : (
+        <Loader />
+      )}
+    </>
   );
 };
 
