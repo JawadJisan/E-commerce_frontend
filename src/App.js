@@ -13,7 +13,7 @@ import LoginSignUp from "./component/user/LoginSignUp";
 // import { loadUser } from './actions/userAction';
 import useAuthCheck from "./hooks/useAuthCheck";
 import UserOptions from "./component/layout/Header/UserOptions";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import Profile from "./component/user/Profile.js";
 import ProtectedRoute from "./component/Route/ProtectedRoute.js";
 import UpdateProfile from "./component/user/UpdateProfile";
@@ -45,7 +45,7 @@ import NotFound from "./component/layout/Not Found/NotFound.js";
 
 function App() {
   const authChecked = useAuthCheck();
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
   const { isAuthenticated, user } = useSelector((state) => state.user) || {};
 
   const [stripeApiKey, setStripeApiKey] = useState("");
