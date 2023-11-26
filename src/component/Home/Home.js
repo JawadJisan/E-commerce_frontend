@@ -28,9 +28,9 @@ const Home = () => {
         <Loader />
       ) : (
         <>
-          <MetaData title="E-Commerce" />
+          <MetaData title="Shop Flow" />
           <div className="banner">
-            <p>Welcome to E-commerce</p>
+            <p>Welcome to Shop Flow</p>
             <h1>FIND AMAZING PRODUCTS BELOW</h1>
 
             <a href="#container">

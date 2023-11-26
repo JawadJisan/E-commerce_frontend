@@ -1,31 +1,40 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState } from "react";
 import "./ProductDetails.css";
 import Carousel from "react-material-ui-carousel";
-import Loader from '../layout/Loader/Loader';
-import MetaData from '../layout/MetaData';
-import { clearErrors, getProductDetails, newReview } from '../../actions/productAction';
-import { useDispatch, useSelector } from 'react-redux';
-import { useParams } from 'react-router-dom';
-import { Button, Dialog, DialogActions, DialogContent, DialogTitle, Rating } from '@mui/material';
+import Loader from "../layout/Loader/Loader";
+import MetaData from "../layout/MetaData";
+import {
+  clearErrors,
+  getProductDetails,
+  newReview,
+} from "../../actions/productAction";
+import { useDispatch, useSelector } from "react-redux";
+import { useParams } from "react-router-dom";
+import {
+  Button,
+  Dialog,
+  DialogActions,
+  DialogContent,
+  DialogTitle,
+  Rating,
+} from "@mui/material";
 
 // import { Rating } from "@material-ui/lab";
 
 import ReviewCard from "./ReviewCard.js";
-import { useAlert } from 'react-alert';
-import { NEW_REVIEW_RESET } from '../../constants/productConstants';
-import { addItemsToCart } from '../../actions/cartAction';
+import { useAlert } from "react-alert";
+import { NEW_REVIEW_RESET } from "../../constants/productConstants";
+import { addItemsToCart } from "../../actions/cartAction";
 
-
-
-const ProductDetails = ({ }) => {
-  const dispatch = useDispatch()
-  const param = useParams()
+const ProductDetails = ({}) => {
+  const dispatch = useDispatch();
+  const param = useParams();
   const alert = useAlert();
-  const state = (useSelector((state) => state)) || {};
+  const state = useSelector((state) => state) || {};
 
-  const product = state.productDetails?.product
-  const loading = state.productDetails?.loading
-  const error = state.productDetails?.error
+  const product = state.productDetails?.product;
+  const loading = state.productDetails?.loading;
+  const error = state.productDetails?.error;
   // console.log(product)
 
   const options = {
@@ -35,15 +44,14 @@ const ProductDetails = ({ }) => {
     precision: 0.5,
   };
 
-  const { success, error: reviewError } = useSelector((state) => state.newReview);
-
-
+  const { success, error: reviewError } = useSelector(
+    (state) => state.newReview
+  );
 
   const [quantity, setQuantity] = useState(1);
   const [open, setOpen] = useState(false);
   const [rating, setRating] = useState(0);
   const [comment, setComment] = useState("");
-
 
   const decreaseQuantity = () => {
     if (1 >= quantity) return;
@@ -91,7 +99,7 @@ const ProductDetails = ({ }) => {
       dispatch({ type: NEW_REVIEW_RESET });
     }
 
-    dispatch(getProductDetails(param.id))
+    dispatch(getProductDetails(param.id));
   }, [dispatch, param.id, error, success, reviewError, alert]);
 
   return (
@@ -100,13 +108,12 @@ const ProductDetails = ({ }) => {
         <Loader />
       ) : (
         <>
-          <MetaData title={`${product?.name} -- ECOMMERCE`} />
+          <MetaData title={`${product?.name} -- Shop-Flow`} />
           <div className="ProductDetails">
             <div>
-              <div className='carousell'>
+              <div className="carousell">
                 {product?.images &&
                   product?.images.map((item, i) => (
-
                     <img
                       className="CarouselImage"
                       key={i}
@@ -209,7 +216,7 @@ const ProductDetails = ({ }) => {
         </>
       )}
     </>
-  )
-}
+  );
+};
 
-export default ProductDetails
+export default ProductDetails;

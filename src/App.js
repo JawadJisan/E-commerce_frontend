@@ -54,6 +54,7 @@ function App() {
     ? JSON.parse(localStorage.getItem("auth"))
     : {};
   // console.log(token?.accessToken)
+  // console.log(token?.accessToken)
 
   async function getStripeApiKey() {
     const { data } = await axios.get(
